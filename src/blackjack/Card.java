@@ -6,29 +6,60 @@ package blackjack;
 import javax.swing.ImageIcon;
 /**
  *
- * @author martins
+ * @author Martins
  */
 public class Card {
+    /**
+     * Contains card name
+     */
     private String CardName;
     
+    /**
+     * Card value
+     */
     private int CardValue;
     
+    /**
+     * Card constructor, sets cards name
+     * 
+     * @param name 
+     */
     public Card(String name) {
         setName(name);
     }
     
+    /**
+     * Sets cards name
+     * 
+     * @param name 
+     */
     public void setName(String name) {
         CardName = name;
     }
     
+    /**
+     * Getter for cards name
+     * 
+     * @return 
+     */
     public String getName() {
         return CardName;
     }
     
+    /**
+     * Gets image of the card
+     * 
+     * @return 
+     */
     public String getImageName() {
         return CardName.concat(".png");
     }
     
+    /**
+     * Creates ImageLabel object with card image
+     * 
+     * @return 
+     */
     public ImageLabel getImage() {
         String initialPath = "resources/cards/";
         String url = getClass().getResource(".").getPath().concat(initialPath).concat(getImageName());
@@ -40,10 +71,20 @@ public class Card {
         return label;
     }
     
+    /**
+     * Sets value for card
+     * 
+     * @param v 
+     */
     public void setValue(int v) {
         CardValue = v;
     }
     
+    /**
+     * Gets cards value
+     * 
+     * @return 
+     */
     public int getValue() {
         int value = 0;
         
@@ -92,6 +133,11 @@ public class Card {
         return value;
     }
     
+    /**
+     * Checks does current card is knave
+     * 
+     * @return 
+     */
     public boolean isKnave() {
         boolean result = false;
         

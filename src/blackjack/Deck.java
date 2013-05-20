@@ -12,17 +12,17 @@ import java.util.Random;
  */
 public class Deck {
     /**
-     * 
+     * Deck array
      */
     private String[] Cards;
     
     /**
-     * 
+     * Stores position of next card in array
      */
     private int Position = 0;
 
     /**
-     * 
+     * Deck constructor
      */
     public Deck() {
         init();
@@ -30,7 +30,7 @@ public class Deck {
     }
 
     /**
-     * Inicialize deck
+     * Inicialize deck, sets up cards
      */
     private void init() {
         Cards = new String[]{
@@ -51,7 +51,7 @@ public class Deck {
     }
 
     /**
-     * Shuffles array using Fisher-Yates algorythm
+     * Shuffles cards using Fisher-Yates algorythm
      */
     private void shuffleDeck() {
         Random r = new Random();

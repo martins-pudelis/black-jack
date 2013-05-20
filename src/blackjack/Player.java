@@ -7,21 +7,43 @@ import java.util.ArrayList;
 
 /**
  *
- * @author root
+ * @author Martins
  */
 public class Player {
-    //private Card[] PlayerCards;
+    /**
+     * Array list with players cards
+     */
     private ArrayList<Card> PlayerCards = new ArrayList<Card>(); 
+    
+    /**
+     * Type of the player
+     */
     private String PlayerType;
     
+    /**
+     * Constructor for player class
+     * 
+     * @param type 
+     */
     public Player(String type) {
         PlayerType = type;
     }
     
+    /**
+     * Adds card to the list
+     * 
+     * @param c with card object
+     */
     public void addCard(Card c) {
         PlayerCards.add(c);
     }
     
+    
+    /**
+     * Gets player score from cards
+     * 
+     * @return 
+     */
     public int getResult() {
         int result = 0;
         int cardsTaken = PlayerCards.size();
@@ -35,14 +57,29 @@ public class Player {
         return result;
     }
     
+    /**
+     * Getter for cards
+     * 
+     * @return 
+     */
     public ArrayList<Card> getPlayerCards() {
         return PlayerCards;
     }
     
+    /**
+     * Function to check does player is human
+     * 
+     * @return 
+     */
     public boolean isHuman() {
         return PlayerType.equals("human");
     }
     
+    /**
+     * Function to check does player is computer
+     * 
+     * @return 
+     */
     public boolean isComputer() {
         return PlayerType.equals("computer");
     }

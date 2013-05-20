@@ -15,8 +15,6 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import java.awt.Insets;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JOptionPane;
 import java.awt.ComponentOrientation;
@@ -136,7 +134,6 @@ public class BlackJackView extends FrameView {
         jMenuItem1 = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
 
         mainPanel.setName("mainPanel"); // NOI18N
@@ -299,10 +296,6 @@ public class BlackJackView extends FrameView {
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
-        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
-        jMenuItem2.setName("jMenuItem2"); // NOI18N
-        helpMenu.add(jMenuItem2);
-
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
@@ -318,10 +311,10 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     newGame();
 }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    //Sets up application for first game
     @Action
     public void initGame() {
         GameObject = new Game();
-        System.out.print(GameObject);
         drawCards();
         updatePlayersResult();
         
@@ -336,6 +329,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         );
     }
     
+    //Paint first two cards for players
     @Action
     public void drawCards() {
         Player ComputerObject = GameObject.getComputer();
@@ -358,24 +352,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
     
-    /*@Action
-    public void drawPlayerCards(Player p) {
-        int length = p.getPlayerCards().size();
-        
-        for (int i=0; i<length; i++) {
-            if (p.isHuman()) {
-                jUserCardsPanel.setLocation(i+100, 0);
-                jUserCardsPanel.add(p.getPlayerCards().get(i).getImage());
-            } else {
-                jComputerCardsPanel.setLocation(0, i*100);
-                jComputerCardsPanel.add(p.getPlayerCards().get(i).getImage());
-                
-            }
-        }
-        
-        mainPanel.repaint();
-    }*/
-    
+    //Card painter function
     @Action 
     public void paintCard(Player p, Card c) {
         ImageLabel icon = c.getImage();
@@ -391,6 +368,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
     
+    //Update players score
     @Action
     public void updatePlayersResult() {
         Player ComputerObject = GameObject.getComputer();
@@ -400,6 +378,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         updatePlayerScore(HumanObject);
     }
     
+    //Updates player score
     @Action
     public void updatePlayerScore(Player p) {
         if (p.isHuman()) {
@@ -409,6 +388,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
     
+    //By pressing button user takes new card
     @Action
     public void getNewCard() {
         Player HumanObject = GameObject.getHuman();
@@ -446,17 +426,8 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
         }
     }
-    
-    @Action
-    public void showGameOverBox() {
-        if (gameOverBox == null) {
-            JFrame mainFrame = BlackJackApp.getApplication().getMainFrame();
-            gameOverBox = new GameOver(mainFrame);
-            gameOverBox.setLocationRelativeTo(mainFrame);
-        }
-        BlackJackApp.getApplication().show(gameOverBox);
-    }
 
+    //Shows for user knave value option by using JOptionPane
     @Action
     public void showKnaveChoiceBox(Card c) {
         Object[] options = {"11", "1"};
@@ -476,15 +447,9 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         } else {
             c.setValue(1);
         }
-        
-        /*if (knaveChoiceBox == null) {
-            JFrame mainFrame = BlackJackApp.getApplication().getMainFrame();
-            knaveChoiceBox = new KnaveChoice(mainFrame);
-            knaveChoiceBox.setLocationRelativeTo(mainFrame);
-        }
-        BlackJackApp.getApplication().show(knaveChoiceBox);*/
     }
 
+    //Processes computers turn
     @Action
     public void computersTurn() {
         
@@ -512,9 +477,6 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                         card.setValue(11);
                     }
                 }
-
-                //drawPlayerCards(HumanObject);
-                
 
                 if (ComputerObject.getResult() >= 17 && 
                     HumanObject.getResult() < ComputerObject.getResult() &&
@@ -565,6 +527,7 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
     
+    //Resets controls position and setup everything for the new game
     @Action 
     public void newGame() {
         stopButton.setEnabled(true);
@@ -590,7 +553,6 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jUserCardsPanel;
     private javax.swing.JPanel mainPanel;
@@ -607,6 +569,4 @@ private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private int busyIconIndex = 0;
     private javax.swing.JLabel statusAnimationLabel;
     private JDialog aboutBox;
-    private JDialog gameOverBox;
-    private JDialog knaveChoiceBox;
 }

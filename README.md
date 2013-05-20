@@ -21,6 +21,7 @@ Support
 
 None
 
-Big Thanks for SVG cards images http://code.google.com/p/vectorized-playing-cards/
+Thanks 
 ------
 
+for SVG cards images http://code.google.com/p/vectorized-playing-cards/
